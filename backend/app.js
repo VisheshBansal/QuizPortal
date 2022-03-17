@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const path = require("path")
 const helmet = require("helmet");
 const cors = require("cors");
-const rateLimit = require("express-rate-limit");
 const User = require("./api/models/user");
 require("dotenv").config();
 const Info = require("./api/models/info")
@@ -17,7 +16,7 @@ var app = require("express")();
 var http = require("http").Server(app);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "http://localhost:5500",
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
