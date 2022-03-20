@@ -1,0 +1,39 @@
+.container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 800;
+  transition: 0.2s;
+}
+
+.innerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  width: 100%;
+  max-width: 1240px;
+}
+
+.logo {
+  cursor: pointer;
+  z-index: 1;
+  width: 256px;
+}
+
+.logo h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .innerContainer{
+    padding: 20px 24px;
+  }
+  .logo {
+    width: 192px;
+  }
+}

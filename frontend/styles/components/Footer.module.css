@@ -1,0 +1,27 @@
+.container {
+  align-self: stretch;
+  padding: 40px;
+  margin-top: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.innerContainer {
+  width: 100%;
+  max-width: 1240px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.innerContainer h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .innerContainer {
+    padding: 0;
+  }
+}
