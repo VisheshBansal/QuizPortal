@@ -6,14 +6,7 @@ const quizSchema = mongoose.Schema(
 
     name: { type: String },
     subject : {type:String},
-    questions : [{
-        title : { type:String},
-        options : [{
-            type:String
-        }]
-
-    }]
-   
+    questions : [{ type:mongoose.Mixed}]
   },
   { timestamps: true }
 );

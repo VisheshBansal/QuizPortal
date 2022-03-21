@@ -8,7 +8,6 @@ const User = require("./api/models/user");
 require("dotenv").config();
 const Info = require("./api/models/info")
 const database = require("./config/database");
-
 const logResponseBody = require("./utils/logResponse");
 
 
@@ -122,7 +121,7 @@ io.on("connection", async (sc) => {
   setTimeout(sendHeartbeat, 8000);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 //Start the server
 http.listen(PORT, function () {
