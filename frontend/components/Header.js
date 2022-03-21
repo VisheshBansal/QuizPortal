@@ -8,8 +8,7 @@ const Header = () => {
       <div className={classes.innerContainer}>
         <Link href="/">
           <div className={classes.logo}>
-            <h3>QuizPortal</h3>
-            {/* <Logo /> */}
+            <h3>Quizy</h3>
           </div>
         </Link>
         <div className={classes.right}>
