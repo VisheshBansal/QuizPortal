@@ -3,8 +3,11 @@ import Head from 'next/head'
 import Hero from './../assets/hero.png'
 import Button from './../components/Button'
 import classes from '../styles/pages/Home.module.css'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -16,7 +19,7 @@ export default function Home() {
         <div className={classes.left}>
           <h1>Quizy</h1>
           <h4>Online Testing Portal</h4>
-          <Button label="Start Trial Quiz" onClick={() => console.log('Started')}/>
+          <Button label="Start Trial Quiz" onClick={() => router.push('/environmentCheck')}/>
         </div>
         <div className={classes.right}>
           <Image src={Hero} />

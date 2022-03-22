@@ -5,7 +5,9 @@
   display: grid;
   place-items: center;
   z-index: 800;
+  background: #fff;
   transition: 0.2s;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
 .innerContainer {
@@ -27,6 +29,16 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
+}
+
+.right {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.right div {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

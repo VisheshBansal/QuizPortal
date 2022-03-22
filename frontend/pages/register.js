@@ -1,12 +1,16 @@
 import classes from '../styles/pages/Login.module.css'
+import Button from './../components/Button'
 import Image from "next/image";
 import registerHero from './../assets/register_hero.jpg'
+import { useRouter } from 'next/router'
 
 const Register = () => {
+  const router = useRouter()
 
   const onRegister = (e) => {
     e.preventDefault()
     console.log("Register Clicked!")
+    router.push('/login')
   }
 
   return (
@@ -33,9 +37,7 @@ const Register = () => {
             placeholder='Enter your Password'
             type="password"
           />
-          <button onClick={onRegister}>
-            Register
-          </button>
+          <Button label="Register" onClick={onRegister} />
         </form>
       </div>
       <div className={classes.right}>

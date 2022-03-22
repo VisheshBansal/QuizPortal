@@ -2,12 +2,15 @@ import Button from './../components/Button'
 import classes from '../styles/pages/Login.module.css'
 import Image from "next/image";
 import loginHero from './../assets/login_hero.png'
+import { useRouter } from 'next/router'
 
 const Login = () => {
+  const router = useRouter()
 
   const onLogin = (e) => {
     e.preventDefault()
     console.log("Login Clicked!")
+    router.push('/')
   }
 
   return (

@@ -3,8 +3,10 @@ import Video from './../components/Video'
 import Timer from './../components/Timer'
 import classes from '../styles/pages/Quiz.module.css'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Quiz = () => {
+  const router = useRouter()
 
   const [selected, setSelected] = useState(-1)
   const [curr, setCurr] = useState(0)
