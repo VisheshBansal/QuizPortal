@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import classes from '../styles/components/Timer.module.css'
 
-const Timer = () => {
+const Timer = ({ onFinish }) => {
 	const Ref = useRef(null);
 	const [timer, setTimer] = useState('00:00:00');
+
+	// TODO: redirect on time up
 
 	const getTimeRemaining = (e) => {
 		const total = Date.parse(e) - Date.parse(new Date());

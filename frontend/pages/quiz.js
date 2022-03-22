@@ -11,7 +11,7 @@ const Quiz = () => {
   const [selected, setSelected] = useState(-1)
   const [curr, setCurr] = useState(0)
 
-  const quizId = "1"
+  const quizId = "01"
   const quizLabel = "Internet & Web Programming"
 
   const questions = [
@@ -68,8 +68,7 @@ const Quiz = () => {
       return
     }
     setSelected(-1)
-    if (curr === questions.length - 1) //redirect to finished page
-      console.log("WOOHOO")
+    if (curr === questions.length - 1) router.push('/complete')
     else setCurr(curr => curr+1)
   }
 
@@ -93,7 +92,7 @@ const Quiz = () => {
       </div>
       <div className={classes.right}>
         <Video width={300} />
-        <Timer />
+        <Timer onFinish={() => router.push("/complete")}/>
         <div className={classes.questionNumbers}>
           {questions.map((question, idx) => (
             <div
