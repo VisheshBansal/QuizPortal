@@ -1,3 +1,4 @@
+import Button from './../components/Button'
 import classes from '../styles/pages/Login.module.css'
 import Image from "next/image";
 import loginHero from './../assets/login_hero.png'
@@ -25,9 +26,7 @@ const Login = () => {
             placeholder='Enter your Password'
             type="password"
           />
-          <button onClick={onLogin}>
-            Login
-          </button>
+          <Button label="Login" onClick={onLogin} />
         </form>
       </div>
       <div className={classes.right}>
