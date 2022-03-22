@@ -1,5 +1,6 @@
 import Button from './../components/Button'
 import Video from './../components/Video'
+import Timer from './../components/Timer'
 import classes from '../styles/pages/Quiz.module.css'
 import { useState } from 'react'
 
@@ -45,6 +46,8 @@ const Quiz = () => {
       </div>
       <div className={classes.right}>
         <Video width={300} />
+        <Timer />
+        <Button label="Finish Test" onClick={() => console.log('Quiz finished')} />
       </div>
     </div>
   )
