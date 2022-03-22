@@ -7,34 +7,79 @@ import { useState } from 'react'
 const Quiz = () => {
 
   const [selected, setSelected] = useState(-1)
+  const [curr, setCurr] = useState(0)
 
   const quizId = "1"
   const quizLabel = "Internet & Web Programming"
 
-  const options = [
+  const questions = [
     {
-      label: "Java"
+      question: "Which of the following is a language?",
+      options: [
+        { label: "Java" },
+        { label: "React" },
+        { label: "Microsoft" },
+        { label: "Chrome" },
+      ]
     },
     {
-      label: "React"
+      question: "Which is a backend framework?",
+      options: [
+        { label: "NextJS" },
+        { label: "ReactJS" },
+        { label: "NodeJS" },
+        { label: "VueJS" },
+      ]
     },
     {
-      label: "Unity"
+      question: "Which is a frontend library?",
+      options: [
+        { label: "Deno" },
+        { label: "React" },
+        { label: "Node" },
+        { label: "Go" },
+      ]
     },
     {
-      label: "Chrome"
+      question: "Which of the following is a NoSQL database?",
+      options: [
+        { label: "MySQL" },
+        { label: "Postgres" },
+        { label: "MongoDB" },
+        { label: "Oracle Database" },
+      ]
+    },
+    {
+      question: "Which of the following is invalid?",
+      options: [
+        { label: "<h5>" },
+        { label: "<td>" },
+        { label: "<embed>" },
+        { label: "<h0>" },
+      ]
     },
   ]
+
+  const handleNext = () => {
+    if (selected === -1)  {
+      alert("No option selected!")
+      return
+    }
+    setSelected(-1)
+    if (curr === questions.length - 1) //redirect to finished page
+      console.log("WOOHOO")
+    else setCurr(curr => curr+1)
+  }
 
   return (
     <div className={classes.container}>
       <div className={classes.left}>
         <h1>Quiz {quizId} | {quizLabel}</h1>
         <div className={classes.question}>
-          Q: Which of the following is a language?
+          Q: {questions[curr].question}
         </div>
         <div className={classes.options}>
-          {options.map((option, idx) => (
+          {questions[curr].options.map((option, idx) => (
             <div
               className={[classes.option, idx === selected && classes.selected].join(" ")}
               onClick={() => setSelected(idx)}
@@ -47,7 +92,20 @@ const Quiz = () => {
       <div className={classes.right}>
         <Video width={300} />
         <Timer />
-        <Button label="Finish Test" onClick={() => console.log('Quiz finished')} />
+        <div className={classes.questionNumbers}>
+          {questions.map((question, idx) => (
+            <div
+              key={idx}
+              className={[
+                classes.questionNumber,
+                idx < curr && classes.finished
+              ].join(" ")}
+            >
+              {idx+1}
+            </div>
+          ))}
+        </div>
+        <Button label="Next or Submit" onClick={handleNext} />
       </div>
     </div>
   )
