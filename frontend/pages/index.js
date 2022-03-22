@@ -2,7 +2,7 @@ import Image from "next/image";
 import Head from 'next/head'
 import Hero from './../assets/hero.png'
 import Button from './../components/Button'
-import classes from '../styles/Home.module.css'
+import classes from '../styles/pages/Home.module.css'
 
 export default function Home() {
   return (

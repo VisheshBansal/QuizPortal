@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+}
+
+.container h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.video {
+  border-radius: 8px;
+  margin: 24px 0;
+}
