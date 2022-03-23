@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const infoSchema = mongoose.Schema(
-  {
-    _id: mongoose.Schema.Types.ObjectId,
+    {
+        _id: mongoose.Schema.Types.ObjectId,
 
-  info : {type:String}
+        info : {type:String}
    
-  },
-  { timestamps: true }
+    },
+    { timestamps: true }
 );
 
-module.exports = mongoose.model("Info", infoSchema);
+module.exports = mongoose.model('Info', infoSchema);
