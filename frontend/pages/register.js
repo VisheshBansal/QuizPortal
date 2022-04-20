@@ -2,15 +2,28 @@ import classes from '../styles/pages/Login.module.css'
 import Button from './../components/Button'
 import Image from "next/image";
 import registerHero from './../assets/register_hero.jpg'
+import { signUp } from './../services/auth'
 import { useRouter } from 'next/router'
+import { useState } from 'react';
 
 const Register = () => {
   const router = useRouter()
 
-  const onRegister = (e) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
+  const onRegister = async (e) => {
     e.preventDefault()
     console.log("Register Clicked!")
-    router.push('/login')
+    try {
+      await signUp(name, email, password)
+      router.push('/login')
+    } catch (err) {
+      alert(err.message)
+      console.log(err)
+    }
   }
 
   return (
@@ -21,21 +34,23 @@ const Register = () => {
           <p>Create your account to answer quizzes and top your class!</p>
         </div>
         <form>
-          <input
+        <input
             placeholder='Enter your Name'
             type='text'
-          />
-          <input
-            placeholder='Enter your Phone Number'
-            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             placeholder='Enter your Email ID'
             type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             placeholder='Enter your Password'
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button label="Register" onClick={onRegister} />
         </form>

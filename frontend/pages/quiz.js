@@ -18,46 +18,46 @@ const Quiz = () => {
     {
       question: "Which of the following is a language?",
       options: [
-        { label: "Java" },
-        { label: "React" },
-        { label: "Microsoft" },
-        { label: "Chrome" },
+        "Java",
+        "React",
+        "Microsoft",
+        "Chrome",
       ]
     },
     {
       question: "Which is a backend framework?",
       options: [
-        { label: "NextJS" },
-        { label: "ReactJS" },
-        { label: "NodeJS" },
-        { label: "VueJS" },
+        "NextJS",
+        "ReactJS",
+        "NodeJS",
+        "VueJS",
       ]
     },
     {
       question: "Which is a frontend library?",
       options: [
-        { label: "Deno" },
-        { label: "React" },
-        { label: "Node" },
-        { label: "Go" },
+        "Deno",
+        "React",
+        "Node",
+        "Go",
       ]
     },
     {
       question: "Which of the following is a NoSQL database?",
       options: [
-        { label: "MySQL" },
-        { label: "Postgres" },
-        { label: "MongoDB" },
-        { label: "Oracle Database" },
+        "MySQL",
+        "Postgres",
+        "MongoDB",
+        "Oracle Database",
       ]
     },
     {
       question: "Which of the following is invalid?",
       options: [
-        { label: "<h5>" },
-        { label: "<td>" },
-        { label: "<embed>" },
-        { label: "<h0>" },
+        "<h5>",
+        "<td>",
+        "<embed>",
+        "<h0>",
       ]
     },
   ]
@@ -85,7 +85,7 @@ const Quiz = () => {
               className={[classes.option, idx === selected && classes.selected].join(" ")}
               onClick={() => setSelected(idx)}
             >
-              {idx+1}. {option.label}
+              {idx+1}. {option}
             </div>
           ))}
         </div>

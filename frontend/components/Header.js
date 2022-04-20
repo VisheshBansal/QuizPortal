@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import classes from "../styles/components/Header.module.css";
 import { useRouter } from 'next/router'
+import { isLoggedIn, logout } from '../services/auth';
 
 const Header = () => {
   const router = useRouter()
+
+  const onLogout = () => {
+    logout()
+    router.push('/login')
+  }
 
   return (
     <header className={classes.container}>
@@ -14,8 +20,15 @@ const Header = () => {
           </div>
         </Link>
         <div className={classes.right}>
-          <div className={classes.text} onClick={() => router.push('/login')}>Login</div>
-          <div className={classes.photo} onClick={() => router.push('/register')}>Register</div>
+          {
+            isLoggedIn()
+            ?
+              <div className={classes.text} onClick={() => onLogout()}>Logout</div>
+            : (<>
+                <div className={classes.text} onClick={() => router.push('/login')}>Login</div>
+                <div className={classes.photo} onClick={() => router.push('/register')}>Register</div>
+              </>)
+          }
         </div>
       </div>
     </header>
