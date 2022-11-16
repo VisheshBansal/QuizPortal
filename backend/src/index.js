@@ -1,52 +1,50 @@
-const { join } = require('path')
-const express = require('express')
-const app = express()
-const helmet = require('helmet')
-const cors = require('cors')
-const morgan = require('morgan')
-const mongoose = require('mongoose')
-const routes = require(join(__dirname, 'api', 'routes', 'v1'))
+const { join } = require("path");
+const express = require("express");
+const app = express();
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+const routes = require(join(__dirname, "api", "routes", "v1"));
 
-require(join(__dirname, 'config', 'database'))
+require(join(__dirname, "config", "database"));
 
 // Prevent common security vulnerabilities
-app.use(helmet())
+app.use(helmet());
 
 // use morgan to log at command line
-if (process.env.NODE_ENV !== 'test') app.use(morgan('combined')) // 'combined' outputs the Apache style LOGs
+if (process.env.NODE_ENV !== "test") app.use(morgan("combined")); // 'combined' outputs the Apache style LOGs
 
 const corsOptions = {
-  origin: '*',
+  origin: "*",
   credentials: true, // access-control-allow-credentials:true
-  optionSuccessStatus: 200
-}
+  optionSuccessStatus: 200,
+};
 
-app.set('trust proxy', true)
-app.use(cors(corsOptions))
-
+app.set("trust proxy", true);
+app.use(cors(corsOptions));
 
 // Parse json body
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // app.use(cors());
 
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 
 app.use(function (err, req, res, next) {
   res.status(err.status || 500).json({
     errors: {
       message: err.message,
-      error: {}
-    }
-  })
-})
+      error: {},
+    },
+  });
+});
 
-app.use('/', routes)
+app.use("/", routes);
 
-
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-})
+  console.log(`Server listening on port ${PORT}`);
+});
 
-module.exports = app
+module.exports = app;

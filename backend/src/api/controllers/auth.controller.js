@@ -2,7 +2,6 @@ const { join } = require('path')
 const User = require(join(__dirname, '..', 'models', 'user.model'))
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-
 const createToken = async (user) => {
   const token = await jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.SECRET_JWT, {
     expiresIn: 60 * 60 * 24

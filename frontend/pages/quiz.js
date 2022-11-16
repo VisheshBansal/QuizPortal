@@ -8,31 +8,34 @@ import { getQuiz } from '../services/quiz'
 
 const Quiz = () => {
   const router = useRouter()
+  const quizId = router.query
 
   const [selected, setSelected] = useState(-1)
   const [curr, setCurr] = useState(0)
 
-  const quizId = "01"
-  const quizLabel = "Internet & Web Programming"
+  const quizLabel = "Software Engineering"
 
   const [questions, setQuestions] = useState([])
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
-    getQuiz().then(res => {
-      setQuestions(res)
+    getQuiz(quizId, token).then(res => {
+      setQuestions(res);
     })
+
+
   }, [])
 
 
 
   const handleNext = () => {
-    if (selected === -1)  {
+    if (selected === -1) {
       alert("No option selected!")
       return
     }
     setSelected(-1)
     if (curr === questions.length - 1) router.push('/complete')
-    else setCurr(curr => curr+1)
+    else setCurr(curr => curr + 1)
   }
 
   return (
@@ -50,14 +53,14 @@ const Quiz = () => {
                 className={[classes.option, idx === selected && classes.selected].join(" ")}
                 onClick={() => setSelected(idx)}
               >
-                {idx+1}. {option}
+                {idx + 1}. {option}
               </div>
             ))}
           </div>
         </div>
         <div className={classes.right}>
           <Video width={300} />
-          <Timer onFinish={() => router.push("/complete")}/>
+          <Timer onFinish={() => router.push("/complete")} />
           <div className={classes.questionNumbers}>
             {questions.map((question, idx) => (
               <div
@@ -67,7 +70,7 @@ const Quiz = () => {
                   idx < curr && classes.finished
                 ].join(" ")}
               >
-                {idx+1}
+                {idx + 1}
               </div>
             ))}
           </div>
@@ -80,4 +83,4 @@ const Quiz = () => {
 
 export default Quiz
 
-{/* <Button label="Proceed to Test" onClick={() => { console.log('go to test') }} /> */}
+{/* <Button label="Proceed to Test" onClick={() => { console.log('go to test') }} /> */ }

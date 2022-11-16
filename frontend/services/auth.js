@@ -29,6 +29,7 @@ export const login = async (email, pwd) => {
 
   const res = await client.post('/user/login', data, config)
   localStorage.setItem("token", res.data.token);
+  localStorage.setItem("score", 3);
   return res.data
 }
 

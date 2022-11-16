@@ -9,7 +9,7 @@ const quizRouter = require(join(__dirname, 'quiz', 'quiz.route'))
 router.get('/', async (req, res) => {
   res.status(404).json({
     message: 'Welcome to Quiz API!',
-    base_url: `${req.protocol}://${req.get('host')}/api/`,
+    base_url: `${req.protocol}://${req.get('host')}`,
     endpoints: [
       'GET: /all'
     ]

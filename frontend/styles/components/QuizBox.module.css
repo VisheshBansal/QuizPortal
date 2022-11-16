@@ -1,0 +1,22 @@
+/* make an accordian with gray background */
+
+.quizbox {
+    background-color: #ddd;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 1em 1em;
+    margin: 10px 0;
+    overflow: hidden;
+    width: 55%;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.quizbox:hover {
+    background-color: #259F6C;
+    border-color: whitesmoke;
+    color: white;
+    opacity: 0.95;
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}

@@ -1,8 +1,8 @@
 import Image from "next/image";
-import classes from '../styles/pages/Login.module.css'
-import Trophy from '../assets/trophy.png'
+import classes from '../../styles/pages/Login.module.css'
+import Trophy from '../../assets/trophy.png'
 import { useState, useEffect } from 'react'
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import { useRouter } from "next/router";
 
 

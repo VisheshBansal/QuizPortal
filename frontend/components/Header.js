@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Logo from '../assets/logo.png'
+import Image from 'next/image';
 import classes from "../styles/components/Header.module.css";
 import { useRouter } from 'next/router'
 import { isLoggedIn, logout } from '../services/auth';
@@ -16,7 +18,7 @@ const Header = () => {
       <div className={classes.innerContainer}>
         <Link href="/">
           <div className={classes.logo}>
-            <h3>Quizy</h3>
+            <Image src={Logo} width={40} height={40}/>
           </div>
         </Link>
         <div className={classes.right}>

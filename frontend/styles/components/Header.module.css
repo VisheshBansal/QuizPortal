@@ -1,51 +1,52 @@
 .container {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  z-index: 800;
-  background: #fff;
-  transition: 0.2s;
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    z-index: 800;
+    background: #ffa3b460;
+    transition: 0.2s;
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
 .innerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  width: 100%;
-  max-width: 1240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    width: 100%;
+    max-width: 1240px;
 }
 
 .logo {
-  cursor: pointer;
-  z-index: 1;
-  width: 256px;
+    cursor: pointer;
+    z-index: 1;
+    width: 256px;
 }
 
 .logo h3 {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    width: 256px;
 }
 
 .right {
-  display: flex;
-  gap: 18px;
-  align-items: center;
+    display: flex;
+    gap: 18px;
+    align-items: center;
 }
 
 .right div {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-  .innerContainer{
-    padding: 20px 24px;
-  }
-  .logo {
-    width: 192px;
-  }
+    .innerContainer {
+        padding: 20px 24px;
+    }
+    .logo {
+        width: 192px;
+    }
 }

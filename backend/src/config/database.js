@@ -1,6 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-let url = process.env.MONGO_URL || 'mongodb://localhost:27017/quizApi'
+let url = process.env.MONGO_URL
+
 if (process.env.NODE_ENV === 'test') { url = process.env.MONGO_TEST_URL }
 
 (async () => {

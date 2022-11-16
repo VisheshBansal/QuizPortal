@@ -18,7 +18,7 @@ const Login = () => {
     console.log("Login Clicked!")
     try {
       await login(email, password)
-      router.push('/')
+      router.push('/quizzes')
     } catch (err) {
       alert(err.message)
       console.log(err)

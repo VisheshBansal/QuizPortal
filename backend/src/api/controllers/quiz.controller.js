@@ -22,7 +22,7 @@ exports.getQuiz = async (req, res) => {
   try {
     const quiz = await Quiz.findById(id)
     if (!quiz) { return res.status(404).json({ success: false, error: 'Quiz does not exist' }) }
-    let { time, creator, attempted, questions } = quiz
+    let { time, creator, attempted, questions , name} = quiz
     // filter questions to not send the answer
     // const filteredQuestions = questions.map(questions => {
     //   const { question, options } = questions
@@ -35,7 +35,7 @@ exports.getQuiz = async (req, res) => {
     }
     const attemptedData = attempted.filter(attempt => attempt.user.toString() === req.user.id)
     logger.info(NAMESPACE, 'Quiz Found')
-    return res.status(200).json({ success: true, time, creator, questions, attempted: attemptedData })
+    return res.status(200).json({ success: true, name, time, creator, questions, attempted: attemptedData })
   } catch (err) {
     logger.error(NAMESPACE, err)
     return res.status(500).json({ success: false, error: 'Some Internal Error Occured' })
@@ -47,15 +47,15 @@ exports.getQuiz = async (req, res) => {
     Desc: Create a new Quiz
     Auth: Bearer Token
     Query: None
-    Body: time (time limit of the quiz), creator (id of the creator of quiz), questions (array of question ids)
+    Body: time (time limit of the quiz), creator (id of the creator of quiz), questions (array of question ids), name (name of the quiz)
     Returns: Success
 */
 exports.createQuiz = async (req, res) => {
-  const { time, questions } = req.body
+  const { time, name, questions } = req.body
   logger.info(NAMESPACE, 'Creating Quiz')
   try {
     // ! TO DO moment fix
-    if (!(time && questions)) { return res.status(422).json({ success: false, error: 'Missing required fields' }) }
+    if (!(time && name && questions)) { return res.status(422).json({ success: false, error: 'Missing required fields' }) }
     const parsedTime = moment(time, 'HH:mm:ss').format('HH:mm:ss')
     if (parsedTime === 'Invalid date') { return res.status(422).json({ success: false, error: 'Invalid time format' }) }
     // check if the questions schema is valid
@@ -65,6 +65,7 @@ exports.createQuiz = async (req, res) => {
       if (questions[i].options.indexOf(questions[i].answer) === -1) { return res.status(422).json({ success: false, error: 'Answer is not included in options' }) }
     }
     const quiz = new Quiz({
+      name: name,
       time: parsedTime,
       creator: req.user.id,
       attempted: [],
@@ -228,7 +229,7 @@ exports.getQuizzes = async (req, res) => {
     if (groupQuizzes.length === 0) { return res.status(404).json({ success: false, error: 'No quizzes' }) }
     const obj = []
     for (let i = 0; i < groupQuizzes.length; i++) {
-      const { _id, creator, time, questions } = groupQuizzes[i]
+      const { _id, creator, name, time, questions } = groupQuizzes[i]
       // filter question to not show answer
       const creatorUserObject = await User.findById(creator)
       const creatorUser = {
@@ -243,6 +244,7 @@ exports.getQuizzes = async (req, res) => {
         id: _id,
         creator: creatorUser,
         time,
+        name,
         questions: questions2
       })
     }

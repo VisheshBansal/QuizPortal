@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import classes from '../styles/components/Timer.module.css'
 
-const Timer = ({ onFinish }) => {
+const Timer = ({ onFinish, totalTime }) => {
 	const Ref = useRef(null);
-	const [timer, setTimer] = useState('00:00:00');
+	const [timer, setTimer] = useState(totalTime);
 
 	// TODO: redirect on time up
 
@@ -19,7 +19,7 @@ const Timer = ({ onFinish }) => {
 
 	const startTimer = (e) => {
 		let { total, hours, minutes, seconds }
-					= getTimeRemaining(e);
+			= getTimeRemaining(e);
 		if (total >= 0) {
 			setTimer(
 				(hours > 9 ? hours : '0' + hours) + ':' +
@@ -32,9 +32,9 @@ const Timer = ({ onFinish }) => {
 
 	const clearTimer = (e) => {
 		// Adjust
-    setTimer('01:00:00');
+		setTimer(totalTime);
 
-    if (Ref.current) clearInterval(Ref.current);
+		if (Ref.current) clearInterval(Ref.current);
 		const id = setInterval(() => {
 			startTimer(e);
 		}, 1000)
@@ -42,17 +42,19 @@ const Timer = ({ onFinish }) => {
 	}
 
 	const getDeadTime = () => {
-    let deadline = new Date();
+		let deadline = new Date();
 		// Adjust
-		deadline.setSeconds(deadline.getSeconds() + 3600);
+
+		deadline.setSeconds(deadline.getSeconds() + (parseInt(totalTime.split(':')[0]) * 60));
 		return deadline;
 	}
 
-  useEffect(() => {
-    clearTimer(getDeadTime());
+	useEffect(() => {
+		console.log(parseInt(totalTime.split(':')[0]))
+		clearTimer(getDeadTime());
 	}, []);
 
-  // const onClickReset = () => {
+	// const onClickReset = () => {
 	// 	clearTimer(getDeadTime());
 	// }
 

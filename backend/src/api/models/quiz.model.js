@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const QuizSchema = new mongoose.Schema({
+  name : { type: String, required: true, default: "Unnamed quiz" },
   time: { type: String, required: true, default: '00:00:00' },
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   attempted: [{

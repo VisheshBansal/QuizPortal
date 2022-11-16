@@ -10,7 +10,7 @@ const EnvironmentCheck = () => {
     <div className={classes.container}>
       <h1>Environment Check</h1>
       <Video width={500}/>
-      <Button label="Proceed to Test" onClick={() => router.push('/quiz')} />
+      <Button label="Proceed to Test" onClick={() => router.push('/quizzes')} />
     </div>
   )
 }
